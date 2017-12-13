@@ -15,7 +15,7 @@ public class Problem30 {
         int totalSum = 0;
 
         for (int i = 2; i < Math.pow(10, maxDigits); i++) {
-            ArrayList<Integer> digits = toDigits(i);
+            ArrayList<Integer> digits = Utils.intToDigits(i);
             int sum = 0;
             for (int digit : digits) {
                 sum += Math.pow(digit, 5);
@@ -26,14 +26,5 @@ public class Problem30 {
         }
 
         System.out.println(totalSum);
-    }
-
-    public static ArrayList<Integer> toDigits(int num) {
-        ArrayList<Integer> digits = new ArrayList<>();
-        while (num > 0) {
-            digits.add(num % 10);
-            num /= 10;
-        }
-        return digits;
     }
 }

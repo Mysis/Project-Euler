@@ -14,9 +14,9 @@ public class Problem32 {
         for (int i = 1; i <= 10000; i++) {
             for (int j = 1; j <= 1000; j++) {
                 List<Integer> digits = new ArrayList<>();
-                digits.addAll(intToDigits(i));
-                digits.addAll(intToDigits(j));
-                digits.addAll(intToDigits(i * j));
+                digits.addAll(Utils.intToDigits(i));
+                digits.addAll(Utils.intToDigits(j));
+                digits.addAll(Utils.intToDigits(i * j));
                 if (digits.size() == 9 && !digits.contains(0)) {
                     Set<Integer> checkDupes = new HashSet<>(digits);
                     if (checkDupes.size() == 9) {
@@ -32,14 +32,5 @@ public class Problem32 {
             sum += val;
         }
         System.out.println(sum);
-    }
-
-    public static ArrayList<Integer> intToDigits(int value) {
-        ArrayList<Integer> digits = new ArrayList<>();
-        while (value > 0) {
-            digits.add(value % 10);
-            value /= 10;
-        }
-        return digits;
     }
 }
