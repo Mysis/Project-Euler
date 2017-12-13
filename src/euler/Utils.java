@@ -21,12 +21,21 @@ public class Utils {
         return value;
     }
 
+    public static int factorial(int val) {
+        int result = 1;
+        for (int i = 2; i <= val; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
     public static ArrayList<Integer> intToDigits(int value) {
         ArrayList<Integer> digits = new ArrayList<>();
         while (value > 0) {
             digits.add(value % 10);
             value /= 10;
         }
+        Collections.reverse(digits);
         return digits;
     }
 
