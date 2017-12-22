@@ -1,8 +1,6 @@
 package euler;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Utils {
 
@@ -37,6 +35,23 @@ public class Utils {
         }
         Collections.reverse(digits);
         return digits;
+    }
+
+    public static boolean isPandigital(String strPandigital) {
+        List<Integer> digits = intToDigits(Integer.parseInt(strPandigital));
+        Set<Integer> digitsNoRepeat = new HashSet<>(digits);
+        if (digits.size() != digitsNoRepeat.size()) return false;
+        for (int i = 9; i > digits.size(); i--) {
+            if (digits.contains(i)) return false;
+        }
+        if (digits.contains(0)) return false;
+        return true;
+    }
+
+    public static boolean isPandigital(String strPandigital, int length) {
+        if (length < 1 || length > 9) throw new IllegalArgumentException("Length must be an integer between 1 and 9.");
+        if (strPandigital.length() != length) return false;
+        return isPandigital(strPandigital);
     }
 
     public static boolean isPrime(int num) {

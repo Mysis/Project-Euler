@@ -15,22 +15,10 @@ public class Problem38 {
             String pandigital = "";
             int multiply = 1;
             while (pandigital.length() < 9) {
-                pandigital = pandigital.concat(new Integer(i * multiply).toString());
+                pandigital = pandigital.concat(String.valueOf(i * multiply));
                 multiply++;
             }
-            if (pandigital.length() == 9) {
-                Set<Character> characters = new HashSet<Character>();
-                for (char c : pandigital.toCharArray()) {
-                    if (c == '0') {
-                        characters.clear();
-                        break;
-                    }
-                    characters.add(c);
-                }
-                if (characters.size() == 9) {
-                    answers.add(Integer.parseInt(pandigital));
-                }
-            }
+            if (Utils.isPandigital(pandigital, 9)) answers.add(Integer.parseInt(pandigital));
         }
 
         int largest = 0;
