@@ -19,12 +19,43 @@ public class Utils {
         return value;
     }
 
+    public static long digitsToLong(List<Integer> digits) {
+        List<Integer> toReverse = new ArrayList<>(digits);
+        Collections.reverse(toReverse);
+        int place = 0;
+        long value = 0;
+        for (int digit : toReverse) {
+            value += digit * Math.pow(10, place);
+            place++;
+        }
+        return value;
+    }
+
     public static int factorial(int val) {
         int result = 1;
         for (int i = 2; i <= val; i++) {
             result *= i;
         }
         return result;
+    }
+
+    public static ArrayList<ArrayList<Integer>> generatePermutations(List<Integer> numbers) {
+        ArrayList<ArrayList<Integer>> permutations = new ArrayList<>();
+        if (numbers.size() > 1) {
+            for (int number : numbers) {
+                ArrayList<Integer> unusedNumbers = new ArrayList<>(numbers);
+                unusedNumbers.remove(Integer.valueOf(number));
+                for (ArrayList<Integer> permutation : generatePermutations(unusedNumbers)) {
+                    ArrayList<Integer> newPermutation = new ArrayList<>();
+                    newPermutation.add(number);
+                    newPermutation.addAll(permutation);
+                    permutations.add(newPermutation);
+                }
+            }
+        } else {
+            permutations.add(new ArrayList<>(numbers));
+        }
+        return permutations;
     }
 
     public static ArrayList<Integer> intToDigits(int value) {
